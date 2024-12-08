@@ -1,6 +1,16 @@
-let url = "https://api.coinbase.com/v2/exchange-rates?currency="
+let url = "https://api.coinbase.com/v2/exchange-rates?currency=";
+let urlAdd;
+let urlIn;
 
 const bodyRef = document.body;
+const button = document.getElementById("button");
+const inputbox = document.getElementById("input1");
+button.addEventListener("click", () => {
+    const inputT = inputbox.value.toUpperCase()
+    urlIn = url + inputT
+    console.log(urlIn)
+    log(inputT)
+});
 
 const addElement = (elType, text) => {
   const ele = document.createElement(elType);
@@ -10,8 +20,8 @@ const addElement = (elType, text) => {
 
 
 async function log(coin) {
-    url = url + coin;
-    const response = await fetch(url);
+    urlAdd = url + coin;
+    const response = await fetch(urlAdd);
     const data = await response.json();
     const dataC = data.data.currency
     const dataUSD = data.data.rates.USD
@@ -19,5 +29,4 @@ async function log(coin) {
     console.log(dataUSD);
     addElement("h3", dataC + ": $" + dataUSD)
   }
-  let input = prompt("Welke coin wil je zien?").toUpperCase()
-  log(input);
+  log(ticker);
