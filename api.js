@@ -26,19 +26,27 @@ button.addEventListener("click", () => {
     } 
 });
 
-buttonRefresh.addEventListener("click", () => {
-    console.clear();
+
+const clearPreviousLogs = () => {
+    const addedElements = bodyRef.querySelectorAll("h3");
+    addedElements.forEach(element => element.remove());
+};
+
+
+const refreshData = () => {
     clearPreviousLogs();
     const sortedArray = alGevraagd.sort();
     sortedArray.forEach(item => {
         setTimeout(200);
-        log(item)});
+        log(item)
     });
+}
+
 
 const addElement = (elType, text) => {
-  const ele = document.createElement(elType);
-  ele.textContent = text;
-  bodyRef.appendChild(ele);
+    const ele = document.createElement(elType);
+    ele.textContent = text;
+    bodyRef.appendChild(ele);
 };
 
 
@@ -50,10 +58,10 @@ async function log(coin) {
     const dataUSD = data.data.rates.USD;
     console.log(data)
     addElement("h3", dataC + ": $" + dataUSD);
-  }
+}
 
 
-  const checkAlreadyAsked = (waarde) => {
+const checkAlreadyAsked = (waarde) => {
     if(alGevraagd.includes(waarde)){
         console.log("Al gevraagd")
         return true;
@@ -62,9 +70,6 @@ async function log(coin) {
         console.log("Nog niet gevraagd");
         return false;
     }
-  }
+}
 
-  const clearPreviousLogs = () => {
-    const addedElements = bodyRef.querySelectorAll("h3");
-    addedElements.forEach(element => element.remove());
-};
+setInterval(refreshData, 10000);
