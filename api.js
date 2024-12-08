@@ -7,7 +7,9 @@ console.log(alGevraagd)
 
 const bodyRef = document.body;
 const button = document.getElementById("button");
+const buttonRefresh = document.getElementById("buttonRe");
 const inputbox = document.getElementById("input1");
+
 button.addEventListener("click", () => {
     console.clear()
     const inputT = inputbox.value.toUpperCase()
@@ -21,10 +23,17 @@ button.addEventListener("click", () => {
         console.log(alGevraagd)
         console.log(urlIn)
         log(inputT)
-    }
-    
-    
+    } 
 });
+
+buttonRefresh.addEventListener("click", () => {
+    console.clear();
+    clearPreviousLogs();
+    const sortedArray = alGevraagd.sort();
+    sortedArray.forEach(item => {
+        setTimeout(200);
+        log(item)});
+    });
 
 const addElement = (elType, text) => {
   const ele = document.createElement(elType);
@@ -54,3 +63,8 @@ async function log(coin) {
         return false;
     }
   }
+
+  const clearPreviousLogs = () => {
+    const addedElements = bodyRef.querySelectorAll("h3");
+    addedElements.forEach(element => element.remove());
+};
