@@ -1,15 +1,29 @@
 let url = "https://api.coinbase.com/v2/exchange-rates?currency=";
 let urlAdd;
 let urlIn;
+let alGevraagd = []
+
+console.log(alGevraagd)
 
 const bodyRef = document.body;
 const button = document.getElementById("button");
 const inputbox = document.getElementById("input1");
 button.addEventListener("click", () => {
+    console.clear()
     const inputT = inputbox.value.toUpperCase()
-    urlIn = url + inputT
-    console.log(urlIn)
-    log(inputT)
+    
+    if(checkAlreadyAsked(inputT)){
+        return;
+    }
+    else{
+        alGevraagd.push(inputT)
+        urlIn = url + inputT
+        console.log(alGevraagd)
+        console.log(urlIn)
+        log(inputT)
+    }
+    
+    
 });
 
 const addElement = (elType, text) => {
@@ -23,10 +37,20 @@ async function log(coin) {
     urlAdd = url + coin;
     const response = await fetch(urlAdd);
     const data = await response.json();
-    const dataC = data.data.currency
-    const dataUSD = data.data.rates.USD
-    console.log(dataC);
-    console.log(dataUSD);
-    addElement("h3", dataC + ": $" + dataUSD)
+    const dataC = data.data.currency;
+    const dataUSD = data.data.rates.USD;
+    console.log(data)
+    addElement("h3", dataC + ": $" + dataUSD);
   }
-  log(ticker);
+
+
+  const checkAlreadyAsked = (waarde) => {
+    if(alGevraagd.includes(waarde)){
+        console.log("Al gevraagd")
+        return true;
+    }
+    else {
+        console.log("Nog niet gevraagd");
+        return false;
+    }
+  }
