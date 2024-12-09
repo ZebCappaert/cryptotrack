@@ -1,7 +1,39 @@
 body {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+main {
     padding: 1rem;
 }
 input {
     margin-bottom: 1rem;
+}
+#button {
+    background-color: gold;
+    border-radius: 10px;
+    border: gold ;
+    height: 2rem;
+    display: block;
+}
+div {
+    padding-top: 1rem;
+}
+nav {
+    background-color: blue;
+    height: 10vh;
+}
+ul {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    text-align: center;
+}
+li {
+    list-style-type: none;
+    padding: 3vh;
+    font-size: 4vh;
+}
+a {
+    text-decoration: none;
+}
+*{
+    color: black;
 }
