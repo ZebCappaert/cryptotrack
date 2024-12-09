@@ -40,3 +40,19 @@ a {
 *{
     color: black;
 }
+
+@media (max-width:500px) {
+    a {
+        font-size: 1rem;
+    }
+    ul {
+        grid-template-columns: repeat(2,1fr);
+    }
+    nav {
+        height: 18vh;
+    }
+    li {
+        height: 1vh;
+
+    }
+}
