@@ -4,6 +4,9 @@ body {
 main {
     padding: 1rem;
 }
+h3 {
+    padding-left: 1rem;
+}
 input {
     margin-bottom: 1rem;
 }
@@ -18,7 +21,7 @@ div {
     padding-top: 1rem;
 }
 nav {
-    background-color: blue;
+    background-color: lightgreen;
     height: 10vh;
 }
 ul {
